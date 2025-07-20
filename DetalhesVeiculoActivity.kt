@@ -17,6 +17,7 @@ import com.alexandre.controledefrota.databinding.ActivityDetalhesVeiculoBinding
 import com.alexandre.controledefrota.viewmodel.HistoricoViewModel
 import com.alexandre.controledefrota.viewmodel.VeiculoViewModel
 import com.alexandre.controledefrota.model.Veiculo
+import com.alexandre.controledefrota.viewmodel.ServicoAnexoViewModel
 
 class DetalhesVeiculoActivity : AppCompatActivity() {
 
@@ -58,13 +59,19 @@ class DetalhesVeiculoActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        historicoAdapter = HistoricoAdapter { historico ->
-            val intent = Intent(this, AdicionarEditarServicoActivity::class.java).apply {
-                putExtra(AdicionarEditarServicoActivity.EXTRA_HISTORICO_ID, historico.id)
-                putExtra(AdicionarEditarServicoActivity.EXTRA_PLACA_VEICULO, placaVeiculo)
-            }
-            startActivityForResult(intent, REQUEST_ADD_SERVICO)
-        }
+        // Obter instância do ServicoAnexoViewModel
+        val servicoAnexoViewModel = ViewModelProvider(this)[ServicoAnexoViewModel::class.java]
+
+        historicoAdapter = HistoricoAdapter(
+            onItemClick = { historico ->
+                val intent = Intent(this, AdicionarEditarServicoActivity::class.java).apply {
+                    putExtra(AdicionarEditarServicoActivity.EXTRA_HISTORICO_ID, historico.id)
+                    putExtra(AdicionarEditarServicoActivity.EXTRA_PLACA_VEICULO, placaVeiculo)
+                }
+                startActivityForResult(intent, REQUEST_ADD_SERVICO)
+            },
+            anexoViewModel = servicoAnexoViewModel
+        )
 
         binding.recyclerViewHistorico.apply {
             layoutManager = LinearLayoutManager(this@DetalhesVeiculoActivity)
