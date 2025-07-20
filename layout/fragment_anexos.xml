@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtTituloAnexos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Anexos do Serviço"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAnexos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/txtTituloAnexos"
+        app:layout_constraintBottom_toTopOf="@id/layoutBotoes"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/txtVazioAnexos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nenhum anexo disponível"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/recyclerViewAnexos"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerViewAnexos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layoutBotoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/btnAdicionarFoto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Foto"
+            android:layout_marginEnd="8dp"
+            android:drawableStart="@drawable/ic_camera" />
+
+        <Button
+            android:id="@+id/btnAdicionarDocumento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Documento"
+            android:drawableStart="@drawable/ic_document" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

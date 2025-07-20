@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilos para o AppBar (barra superior) -->
+    <style name="Theme.ControleDefrota.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <!-- Estilos para o popup do menu (overflow) -->
+    <style name="Theme.ControleDefrota.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
